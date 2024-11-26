@@ -20,13 +20,8 @@
 
 .navbar-title {
     font-size: 1.5rem;
-    font-weight: bold;
 }
 
 .navbar-right {
     margin-right: 100px;
-}
-
-.navbar-link:hover {
-    color: #ff9800;
 }

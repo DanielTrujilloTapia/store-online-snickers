@@ -6,7 +6,7 @@ function Navbar() {
         <nav className="navbar">
             <div className="navbar-left">
                 <img src="/zapatos.png" alt="Logo" className="navbar-logo" />
-                <span className="navbar-title">Snickers</span>
+                <span className="navbar-title">Sneaker Vault</span>
             </div>
             
 
