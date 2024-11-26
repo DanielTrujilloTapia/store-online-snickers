@@ -1,4 +1,5 @@
 import '../style/Navbar.css'
+import UnderlineTabs from './underlineTabs'
 
 function Navbar() {
     return (
@@ -7,11 +8,10 @@ function Navbar() {
                 <img src="/zapatos.png" alt="Logo" className="navbar-logo" />
                 <span className="navbar-title">Snickers</span>
             </div>
+            
+
             <div className="navbar-right">
-                <a className="navbar-link">Exclusivos</a>
-                <a className="navbar-link">Nosotros</a>
-                <a className="navbar-link">Contacto</a>
-                <a className="navbar-link">Contacto</a>
+                <UnderlineTabs></UnderlineTabs>
             </div>
         </nav>
     );

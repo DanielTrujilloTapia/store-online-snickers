@@ -24,16 +24,7 @@
 }
 
 .navbar-right {
-    display: flex;
-    gap: 50px;
     margin-right: 100px;
-}
-
-.navbar-link {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: 1rem;
-    transition: color 0.3s;
 }
 
 .navbar-link:hover {
