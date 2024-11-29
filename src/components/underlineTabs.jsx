@@ -3,14 +3,15 @@ import { MagicTabSelect } from "react-magic-motion";
 import { Link } from "react-router-dom";
 
 const underlineTabs = [
-  { text: "Tennis", path: "/tennis", dropdown: ["Zapatillas", "Ropa", "Accesorios"] },
+  { text: "Tennis", path: "/Sneakers", dropdown: ["Hombres", "Mujeres"] },
   { text: "Nosotros", path: "/nosotros" },
   { text: "Contactanos", path: "/contactanos" },
+  { text: "Carrito", path: "/carrito" },
   { text: "Cuenta", path: "/cuenta" },
 ];
 
 export default function UnderlineTabs() {
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(5);
   const [hoveredIndex, setHoveredIndex] = useState(null); // Controla el índice del dropdown abierto
 
   const tabsComponents = underlineTabs.map((tab, i) => {

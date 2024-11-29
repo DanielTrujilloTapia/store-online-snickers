@@ -1,7 +1,10 @@
+
+
 function Home() {
+
     return(
         <div>
-            <p>asdnjasdnjasndjnsdasdnasndjnasjd</p>
+            Home
         </div>
     )
 }
