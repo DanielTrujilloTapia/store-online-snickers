@@ -2,6 +2,8 @@ import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Sneakers from './components/Sneakers'
+import Carrito from './components/Carrito'
+import Account from './components/Account'
 
 function App() {
 
@@ -9,8 +11,11 @@ function App() {
     <>
       <Navbar/>
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/Home' element={<Home/>}/>
         <Route path='/Sneakers/hombres' element={<Sneakers/>}/>
+        <Route path='/Carrito/hombres' element={<Sneakers/>}/>
+        <Route path='/Carrito' element={<Carrito/>}/>
+        <Route path='/Cuenta' element={<Account/>}/>
       </Routes>
     </>
   )
