@@ -8,18 +8,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import '../Style/carusel.css'
-import { Padding } from '@mui/icons-material';
 
 
 // Tennis carousel component
-const ProductCarouselCard = ({ title, products }) => {
+const ProductCarouselCard = ({ title, products, numImg}) => {
   return (
     <div style={styles.card}>
       <p style={styles.title}>{title}</p>
       <Swiper 
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={20}
-        slidesPerView={4}
+        slidesPerView={numImg}
         navigation
         style={styles.swiper}
         >

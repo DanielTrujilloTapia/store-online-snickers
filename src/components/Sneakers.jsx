@@ -18,7 +18,7 @@ function Sneakers(){
     return(
         <div>
             <div style={{display:"flex", justifyContent:"center"}}>
-                <ProductCarouselCard title="Tenis para Hombres" products={products} />
+                <ProductCarouselCard title="Tenis para Hombres" products={products} numImg={4} />
             </div>
         </div>
 
