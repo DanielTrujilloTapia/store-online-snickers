@@ -1,0 +1,39 @@
+/* HOVER DEL CARD DEL CARRUSEL */
+.swiper-slide-custom {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Combina todas las transiciones */
+    margin: 20px 0px; /* Margen vertical */
+    border: 1px solid transparent; /* Borde inicial transparente */
+  }
+  
+  .swiper-slide-custom:hover {
+    transform: scale(1.05); /* Efecto de zoom */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    border: 1px solid rgb(204, 204, 204); /* Borde gris al hacer hover */
+  }
+  
+  /* HOVER DE LA IMAGEN DEL CARD DEL CARRUSEL */
+  /* Puedes añadir estilos específicos para las imágenes aquí si lo deseas */
+  
+  /* PERSONALIZAR LAS FLECHAS */
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-color: rgba(0, 0, 0, 0.13); /* Fondo semi-transparente */
+    color: rgba(255, 255, 255, 0.575); /* Color del ícono */
+    border-radius: 50%; /* Forma circular */
+    width: 60px; /* Reduce el ancho */
+    height: 60px; /* Reduce el alto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Cambiar color y tamaño al hacer hover */
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    background-color: rgba(0, 0, 0, 0.445); /* Fondo más oscuro */
+    color: rgb(255, 255, 255); /* Color del ícono */
+    transform: scale(1.1); /* Ligeramente más grande */
+  }
+  
+  
