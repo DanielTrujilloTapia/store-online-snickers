@@ -10,9 +10,23 @@ function Carrito() {
         setCartItems(cart);
 
         // Calcula el precio total
-        const total = cart.reduce((sum, item) => sum + item.price, 0);
-        setTotalPrice(total);
+        calculateTotal(cart);
     }, []);
+
+    // Función para calcular el precio total
+    const calculateTotal = (items) => {
+        const total = items.reduce((sum, item) => sum + item.price, 0);
+        setTotalPrice(total);
+    };
+
+    // Función para eliminar un producto del carrito
+    const handleRemoveItem = (index) => {
+        const updatedCart = [...cartItems];
+        updatedCart.splice(index, 1); // Elimina el producto seleccionado
+        setCartItems(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart)); // Actualiza el localStorage
+        calculateTotal(updatedCart); // Recalcula el precio total
+    };
 
     return (
         <div style={styles.container}>
@@ -39,6 +53,12 @@ function Carrito() {
                                         }).format(item.price)}
                                     </p>
                                 </div>
+                                <button
+                                    onClick={() => handleRemoveItem(index)}
+                                    style={styles.removeButton}
+                                >
+                                    Eliminar
+                                </button>
                             </div>
                         ))
                     ) : (
@@ -106,6 +126,15 @@ const styles = {
     price: {
         fontSize: '14px',
         color: '#333',
+    },
+    removeButton: {
+        backgroundColor: '#FF5722',
+        color: 'white',
+        border: 'none',
+        padding: '5px 10px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontSize: '14px',
     },
     summary: {
         flex: 1,
