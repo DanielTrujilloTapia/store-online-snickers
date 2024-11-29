@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 // Import Swiper React components and styles
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -12,8 +14,19 @@ import '../Style/carusel.css'
 
 // Tennis carousel component
 const ProductCarouselCard = ({ title, products, numImg}) => {
+  
+  const navigate = useNavigate(); // Hook para navegar entre rutas
+
+  const handleProductClick = (product) => {
+    localStorage.setItem('tennisVer', JSON.stringify(product));
+    console.log('Producto seleccionado:', product);
+    navigate('/VistaTennis');
+  };
+
+  
+
   return (
-    <div style={styles.card}>
+    <div style={styles.card} >
       <p style={styles.title}>{title}</p>
       <Swiper 
         modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -25,7 +38,9 @@ const ProductCarouselCard = ({ title, products, numImg}) => {
 
         {products.map((product, index) => (
           <SwiperSlide className="swiper-slide-custom" style={{backgroundColor: "white" }} key={index}>
-            <div style={styles.product}>
+            <div style={styles.product} 
+            onClick={() => handleProductClick(product)} // Agrega el controlador aquí
+            >
               <img src={product.image} style={styles.image} />
               <p style={styles.productName}>{product.name}</p>
               <p style={styles.productDescription}>{product.description}</p>
