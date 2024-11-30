@@ -1,61 +1,62 @@
 import { useState } from 'react';
-import { Card, Chip, CardContent, Button, Snackbar, Alert } from '@mui/material'; // Importa Snackbar y Alert para mostrar mensajes
+import { Card, Chip, CardContent, Button, Snackbar, Alert } from '@mui/material';
 import '../Style/TamañoFuente.css';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useNavigate } from 'react-router-dom';
 
 function VistaTennis() {
-    const tennisVerString = localStorage.getItem('tennisVer'); // Obtiene el valor como cadena
-    const tennisVer = tennisVerString ? JSON.parse(tennisVerString) : null; // Convierte a objeto si existe
 
-    const [selectedSize, setSelectedSize] = useState(null); // Estado para la talla seleccionada
-    const [showError, setShowError] = useState(false); // Estado para manejar el Snackbar de error
+    const navigate = useNavigate(); // Hook para navegar entre rutas
+
+    const tennisVerString = localStorage.getItem('tennisVer');
+    const tennisVer = tennisVerString ? JSON.parse(tennisVerString) : null;
+
+    const [selectedSize, setSelectedSize] = useState(null);
+    const [showError, setShowError] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false); // Estado para manejar el Snackbar de éxito
 
     const handleSizeSelect = (size) => {
         setSelectedSize(size);
     };
 
-    const saveTennisWithSize = () => {
-        const tennisConTalla = {
-            ...tennisVer,
-            selectedSize, // Añade la talla seleccionada al objeto
-        };
-        localStorage.setItem('tennisConTalla', JSON.stringify(tennisConTalla)); // Guarda en localStorage
-        console.log('Guardado en localStorage:', tennisConTalla);
-    };
-
     const handleAddToCart = () => {
         if (!selectedSize) {
-            setShowError(true); // Muestra el error si no hay talla seleccionada
+            setShowError(true);
             return;
         }
-    
-        // Crea el objeto combinando los datos de tennisVer y la talla seleccionada
+
         const tennisConTalla = {
             ...tennisVer,
             selectedSize,
         };
-    
-        // Obtén el array existente del localStorage (si no existe, usa un array vacío)
+
         const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-        // Agrega el nuevo objeto al array
         const updatedCart = [...existingCart, tennisConTalla];
-    
-        // Guarda el array actualizado en el localStorage
         localStorage.setItem('cart', JSON.stringify(updatedCart));
-    
+
         console.log('Producto agregado al carrito:', tennisConTalla);
         console.log('Carrito actualizado:', updatedCart);
+
+        // Mostrar mensaje de éxito
+        setShowSuccess(true);
     };
-    
 
     const handleBuyNow = () => {
         if (!selectedSize) {
-            setShowError(true); // Muestra el error si no hay talla seleccionada
+            setShowError(true);
             return;
         }
-        saveTennisWithSize();
-        console.log('Producto listo para compra inmediata.');
+
+        const tennisConTalla = {
+            ...tennisVer,
+            selectedSize,
+        };
+
+        localStorage.setItem('tennisConTalla', JSON.stringify(tennisConTalla));
+        localStorage.setItem('pagoAhora', JSON.stringify(tennisConTalla));
+
+        console.log('Producto listo para compra inmediata:', tennisConTalla);
+        navigate('/ProcesoPago');
     };
 
     return (
@@ -123,6 +124,13 @@ function VistaTennis() {
             <Snackbar open={showError} autoHideDuration={3000} onClose={() => setShowError(false)}>
                 <Alert onClose={() => setShowError(false)} severity="error" sx={{ width: '100%' }}>
                     Por favor, selecciona una talla antes de continuar.
+                </Alert>
+            </Snackbar>
+
+            {/* Snackbar para mostrar éxito */}
+            <Snackbar open={showSuccess} autoHideDuration={3000} onClose={() => setShowSuccess(false)}>
+                <Alert onClose={() => setShowSuccess(false)} severity="success" sx={{ width: '100%' }}>
+                    Producto agregado al carrito correctamente.
                 </Alert>
             </Snackbar>
         </div>
