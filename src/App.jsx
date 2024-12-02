@@ -6,6 +6,7 @@ import Carrito from './components/Carrito'
 import Account from './components/Account'
 import VistaTennis from './components/VistaTennis'
 import ProcesoPago from './components/ProcesoPago'
+import Envio from './components/Envio'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/Cuenta' element={<Account/>}/>
         <Route path='/VistaTennis' element={<VistaTennis/>}/>
         <Route path='/ProcesoPago' element={<ProcesoPago/>}/>
+        <Route path='/Envio' element={<Envio/>}/>
 
       </Routes>
     </>

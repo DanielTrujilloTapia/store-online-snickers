@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import {
     Accordion,
     AccordionSummary,
@@ -17,6 +19,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "../Style/TamañoFuente.css";
 
 function ProcesoPago() {
+
+    const navigate = useNavigate(); // Hook para navegar entre rutas
+
     const TokenDePago = JSON.parse(localStorage.getItem('pagoAhora'));
 
 
@@ -58,11 +63,16 @@ function ProcesoPago() {
             return;
         }
 
+        
+
         console.log("Opción de entrega:", deliveryOption);
         console.log("Datos del domicilio:", address);
         console.log("Método de pago:", paymentMethod);
         console.log("Detalles del pago:", paymentDetails);
         alert("¡Pago confirmado!");
+
+        navigate('/Envio');
+
     };
 
     return (
